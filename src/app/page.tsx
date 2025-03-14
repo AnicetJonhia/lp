@@ -1,40 +1,28 @@
 "use client";
-import React from "react"
+
 import Navbar from "@/components/navigation/Navbar";
+import Home from "@/components/sections/Home";
+import About from "@/components/sections/About";
+import Services from "@/components/sections/Services";
+import Contact from "@/components/sections/Contact";
+import Footer from "@/components/sections/Footer";
+
 
 export default function HomePage() {
 
+
   return (
-      <div>
+    <div>
 
-<div className={"fixed top-0 left-0 w-full z-100  shadow-lg"}>  <Navbar/></div>
+        <Navbar />
+        <main  >
+            <Home />
+            <About />
+            <Services />
+            <Contact />
+            <Footer />
+        </main>
 
-  <section id="home" className="min-h-screen">
-    <h2>Acceuil</h2>
-    <p>Contenu de la section Acceuil</p>
-  </section>
-
-  <section id="about" className="min-h-screen">
-    <h2>A propos</h2>
-    <p>Contenu de la section A propos</p>
-  </section>
-
-  <section id="services" className="min-h-screen">
-    <h2>Services</h2>
-    <p>Contenu de la section Services</p>
-  </section>
-
-  <section id="contact" className="min-h-screen">
-    <h2>Nous Contacter</h2>
-    <p>Contenu de la section Nous Contacter</p>
-  </section>
-        </div>
-  )
+    </div>
+  );
 }
-
-
-
-
-
-
-
