@@ -127,3 +127,19 @@
 html {
   scroll-behavior: smooth;
 }
+
+body {
+  cursor: none;
+}
+
+
+.cursor-follower {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  transform: translate(-50%, -50%);
+  transition: width 0.2s, height 0.2s;
+}

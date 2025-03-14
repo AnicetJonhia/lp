@@ -6,16 +6,18 @@ import About from "@/components/sections/About";
 import Services from "@/components/sections/Services";
 import Contact from "@/components/sections/Contact";
 import Footer from "@/components/sections/Footer";
+import CursorFollower from "@/components/navigation/CursorFollower";
 
 
 export default function HomePage() {
 
 
   return (
-    <div>
+    <div >
 
         <Navbar />
-        <main  >
+        <CursorFollower />
+        <main >
             <Home />
             <About />
             <Services />
