@@ -23,6 +23,7 @@ const Navbar = () => {
           if (entry.isIntersecting) {
             const activeId = `#${entry.target.id}`;
             setActiveSection(activeId);
+            // Met à jour l'URL pour refléter la section active
             window.history.pushState(null, "", activeId);
           }
         });
@@ -41,7 +42,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <header className="flex h-20 w-full shrink-0 items-center px-4 md:px-6" >
+    <header className="flex h-20 w-full shrink-0 items-center px-4 md:px-6">
       <Link href="#" className="mr-6 flex flex-1" prefetch={false}>
         <Triangle className="h-6 w-6" />
         <span className={"ml-2"}>LP</span>
@@ -124,10 +125,13 @@ const CustomLink = ({ href, children, className = "", onClick, isActive }: Custo
       onClick={onClick ? (e) => { onClick(); } : undefined}
       className={`
         inline-flex h-9 w-max items-center justify-center rounded-md px-4 py-2 text-sm font-medium transition-colors
-        hover:bg-muted hover:text-foreground focus:bg-muted-foreground focus:text-primary-foreground focus:outline-none
+        hover:bg-muted hover:text-foreground   
         disabled:pointer-events-none disabled:opacity-50
-        dark:hover:bg-muted-foreground dark:hover:text-primary-foreground dark:focus:bg-muted-foreground dark:focus:text-primary-foreground
-        ${isActive ? "bg-muted-foreground text-primary-foreground dark:bg-muted-foreground dark:text-muted-foreground focus:bg-primary focus:text-primary-foreground" : ""}
+        dark:hover:bg-muted-foreground dark:hover:text-primary-foreground 
+        ${isActive ? "bg-muted-foreground focus:outline-none focus:bg-muted-foreground text-primary-foreground" +
+          " dark:focus:text-primary-foreground" +
+          "  dark:bg-muted-foreground" +
+          " dark:text-muted-foreground  focus:text-primary-foreground" : ""}
         ${className}
       `}
       prefetch={false}
