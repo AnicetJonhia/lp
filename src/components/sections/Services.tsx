@@ -65,7 +65,7 @@ const Services = () => {
         {/* Grid des services */}
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {servicesData.map((service) => (
-            <Card key={service.id} className="shadow-lg rounded-lg">
+            <Card key={service.id} className="shadow-lg rounded-lg max-h-[500px]">
               <CardHeader>
                 <Image
                   src={service.image}
@@ -77,18 +77,19 @@ const Services = () => {
                 </CardTitle>
               </CardHeader>
 
-              <CardContent>
-                <p className="text-gray-600">
-                  {expanded === service.id ? service.fullDesc : service.shortDesc}
-                </p>
-                <Button
-                  variant="outline"
-                  className="mt-4 w-full cursor-pointer"
-                  onClick={() => toggleExpand(service.id)}
-                >
-                  {expanded === service.id ? "Voir moins" : "Voir plus"}
-                </Button>
-              </CardContent>
+         <CardContent className="flex flex-col justify-between">
+            <p className="flex-grow text-foreground">
+              {expanded === service.id ? service.fullDesc : service.shortDesc}
+            </p>
+            <Button
+              variant="outline"
+              className="mt-4 w-full cursor-pointer"
+              onClick={() => toggleExpand(service.id)}
+            >
+              {expanded === service.id ? "Voir moins" : "Voir plus"}
+            </Button>
+          </CardContent>
+
             </Card>
           ))}
         </div>
