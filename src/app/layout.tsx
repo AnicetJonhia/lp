@@ -14,8 +14,8 @@ const bebasNeue = Bebas_Neue({
   variable: "--font-bebas-neue",
 });
 export const metadata: Metadata = {
-  title: "AJ Toursim",
-  description: "AJ Toursim",
+  title: "LP",
+  description: "LP testing",
     icons: {icon: "logo.png"},
 };
 
