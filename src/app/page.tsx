@@ -9,7 +9,7 @@ import Footer from "@/components/sections/Footer";
 import CursorFollower from "@/components/navigation/CursorFollower";
 
 
-export default function HomePage() {
+export default function Page() {
 
 
   return (

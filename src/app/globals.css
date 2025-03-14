@@ -133,13 +133,28 @@ body {
 }
 
 
-.cursor-follower {
-  position: absolute;
-  width: 30px;
-  height: 30px;
+
+
+.cursor-dot {
+  position: fixed;
+  width: 12px;
+  height: 12px;
+  background-color: rgba(0, 0, 0, 0.8); /* Noir */
   border-radius: 50%;
-  background-color: rgba(0, 0, 0, 0.5);
   pointer-events: none;
+  z-index: 9999;
+  transition: transform 0.1s ease-out;
   transform: translate(-50%, -50%);
-  transition: width 0.2s, height 0.2s;
 }
+
+/* Effet progressif : chaque point devient plus petit et plus transparent */
+.dot-0 { width: 14px; height: 14px; background-color: rgba(0, 0, 0, 1); }
+.dot-1 { width: 13px; height: 13px; background-color: rgba(0, 0, 0, 0.9); }
+.dot-2 { width: 12px; height: 12px; background-color: rgba(0, 0, 0, 0.85); }
+.dot-3 { width: 11px; height: 11px; background-color: rgba(0, 0, 0, 0.8); }
+.dot-4 { width: 10px; height: 10px; background-color: rgba(0, 0, 0, 0.75); }
+.dot-5 { width: 9px; height: 9px; background-color: rgba(0, 0, 0, 0.7); }
+.dot-6 { width: 8px; height: 8px; background-color: rgba(0, 0, 0, 0.6); }
+.dot-7 { width: 7px; height: 7px; background-color: rgba(0, 0, 0, 0.5); }
+.dot-8 { width: 6px; height: 6px; background-color: rgba(0, 0, 0, 0.4); }
+.dot-9 { width: 5px; height: 5px; background-color: rgba(0, 0, 0, 0.3); }

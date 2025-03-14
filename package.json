@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@deemlol/next-icons": "^0.1.9",
+    "@next/swc-linux-x64-gnu": "^15.2.2",
     "@radix-ui/react-dialog": "^1.1.6",
     "@radix-ui/react-slot": "^1.1.2",
     "class-variance-authority": "^0.7.1",

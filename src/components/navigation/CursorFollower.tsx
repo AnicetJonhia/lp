@@ -1,49 +1,51 @@
-import { useEffect } from 'react';
+"use client";
+import { useEffect } from "react";
 
 const CursorFollower = () => {
   useEffect(() => {
-    const cursorFollower = document.querySelector('.cursor-follower');
-
-    const handleMouseMove = (e: MouseEvent) => {
-      const { clientX, clientY } = e;
-      if (cursorFollower) {
-        cursorFollower.style.left = `${clientX}px`;
-        cursorFollower.style.top = `${clientY}px`;
-      }
-    };
-
-    // Suivre le mouvement de la souris
-    document.addEventListener('mousemove', handleMouseMove);
-
-    // Agrandir au survol des éléments
-    const elementsToGrow = document.querySelectorAll('button, .hover-grow');
-    elementsToGrow.forEach((el) => {
-      el.addEventListener('mouseenter', () => {
-        if (cursorFollower) {
-          cursorFollower.style.width = '50px';
-          cursorFollower.style.height = '50px';
-        }
-      });
-
-      el.addEventListener('mouseleave', () => {
-        if (cursorFollower) {
-          cursorFollower.style.width = '30px';
-          cursorFollower.style.height = '30px';
-        }
-      });
+    const numDots = 10; // Nombre de points
+    const dots = Array.from({ length: numDots }, (_, i) => {
+      const dot = document.createElement("div");
+      dot.className = `cursor-dot dot-${i}`;
+      document.body.appendChild(dot);
+      return dot;
     });
 
-    // Nettoyer l'effet lorsque le composant est démonté
-    return () => {
-      document.removeEventListener('mousemove', handleMouseMove);
-      elementsToGrow.forEach((el) => {
-        el.removeEventListener('mouseenter', () => {});
-        el.removeEventListener('mouseleave', () => {});
+    let positions = Array(numDots).fill({ x: window.innerWidth / 2, y: window.innerHeight / 2 });
+    let target = { x: positions[0].x, y: positions[0].y };
+
+    const handleMouseMove = (e: MouseEvent) => {
+      target = { x: e.clientX, y: e.clientY };
+    };
+
+    document.addEventListener("mousemove", handleMouseMove);
+
+    const animate = () => {
+      positions.forEach((pos, index) => {
+        setTimeout(() => {
+          const speed = 0.2 - index * 0.015; // Vitesse progressive
+          positions[index] = {
+            x: pos.x + (target.x - pos.x) * speed,
+            y: pos.y + (target.y - pos.y) * speed,
+          };
+
+          dots[index].style.left = `${positions[index].x}px`;
+          dots[index].style.top = `${positions[index].y}px`;
+        }, index * 30); // Décalage temporel entre chaque point
       });
+
+      requestAnimationFrame(animate);
+    };
+
+    animate(); // Lancer l'animation
+
+    return () => {
+      document.removeEventListener("mousemove", handleMouseMove);
+      dots.forEach((dot) => dot.remove());
     };
   }, []);
 
-  return <div className="cursor-follower" />;
+  return null;
 };
 
 export default CursorFollower;
