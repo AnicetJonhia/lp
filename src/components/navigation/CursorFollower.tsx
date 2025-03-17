@@ -3,7 +3,7 @@ import { useEffect } from "react";
 
 const CursorFollower = () => {
   useEffect(() => {
-    const numDots = 10; // Nombre de points
+    const numDots = 7; // Nombre de points
     const dots = Array.from({ length: numDots }, (_, i) => {
       const dot = document.createElement("div");
       dot.className = `cursor-dot dot-${i}`;
@@ -23,7 +23,7 @@ const CursorFollower = () => {
     const animate = () => {
       positions.forEach((pos, index) => {
         setTimeout(() => {
-          const speed = 0.4 - index * 0.02; 
+          const speed = 0.6 - index * 0.025; 
           positions[index] = {
             x: pos.x + (target.x - pos.x) * speed,
             y: pos.y + (target.y - pos.y) * speed,
