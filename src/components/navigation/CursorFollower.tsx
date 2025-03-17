@@ -23,7 +23,7 @@ const CursorFollower = () => {
     const animate = () => {
       positions.forEach((pos, index) => {
         setTimeout(() => {
-          const speed = 0.2 - index * 0.015; // Vitesse progressive
+          const speed = 0.4 - index * 0.02; 
           positions[index] = {
             x: pos.x + (target.x - pos.x) * speed,
             y: pos.y + (target.y - pos.y) * speed,
